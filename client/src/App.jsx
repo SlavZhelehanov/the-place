@@ -1,9 +1,12 @@
+import { Routes, Route } from "react-router";
+
 import './App.css';
+import Home from "./components/home/Home";
 
 export default function App() {
     return (
-        <>
-            <h1>Hello from React</h1>
-        </>
+        <Routes>
+            <Route path="/" element={<Home />} />
+        </Routes>
     )
 }
