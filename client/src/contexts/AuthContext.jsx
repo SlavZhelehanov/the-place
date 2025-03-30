@@ -18,9 +18,7 @@ export const AuthProvider = ({ children }) => {
         const token = localStorage.getItem("token");
         const user = localStorage.getItem("user");
 
-        if (token && user) {
-            setIsAuthenticated(true);
-        }
+        if (token && user) return setIsAuthenticated(true);
     }, []);
 
     // Login and Logout functions

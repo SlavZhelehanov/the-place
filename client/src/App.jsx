@@ -10,6 +10,8 @@ import LoginForm from './components/auth/LoginForm';
 import Settings from './components/auth/Settings';
 import Logout from './components/auth/Logout';
 import HomePage from './components/home/HomePage';
+import UserProfile from './components/auth/UserProfile';
+import PageNotFound from './components/404/PageNotFound';
 
 export default function App() {
     return (
@@ -27,9 +29,11 @@ export default function App() {
                     <Route path="/auth/register" element={<ProtectedFromUserRoute><RegisterForm /></ProtectedFromUserRoute>} />
                     <Route path="/auth/login" element={<ProtectedFromUserRoute><LoginForm /></ProtectedFromUserRoute>} />
 
+                    <Route path="/auth/profile" element={<ProtectedForUserRoute><UserProfile /></ProtectedForUserRoute>} />
                     <Route path="/auth/settings" element={<ProtectedForUserRoute><Settings /></ProtectedForUserRoute>} />
                     <Route path="/auth/logout" element={<ProtectedForUserRoute><Logout /></ProtectedForUserRoute>} />
 
+                    <Route path="*" element={<PageNotFound />} />
                 </Routes>
             </div>
         </AuthProvider>
