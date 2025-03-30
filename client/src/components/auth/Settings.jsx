@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
-import { Link } from "react-router";
+import { Link, useNavigate } from "react-router";
+import { useAuth } from "../../contexts/AuthContext";
 
 const SERVER_URL = "http://localhost:3030/users/me";
 
 export default function Settings() {
     const [account, setAccount] = useState({});
+    const { logout } = useAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const token = localStorage.getItem("token");
@@ -12,7 +15,16 @@ export default function Settings() {
         fetch(SERVER_URL, {
             method: "GET",
             headers: { "X-Authorization": token }
-        }).then(res => res.json()).then(setAccount);
+        }).then(res => {
+            if (res.statusText === "Forbidden") {
+                logout();
+                navigate("/auth/login");
+            } else return res.json();
+        }).then(setAccount).catch(err => {
+            logout();
+            navigate("/auth/login");
+        });
+
     }, []);
 
     return (
@@ -21,7 +33,7 @@ export default function Settings() {
                 <div className="flex flex-col items-center">
                     <div className="relative">
                         <img
-                            src={account?.profilePicture || `https://robohash.org/${account.username}`}
+                            src={account?.profilePicture || `https://robohash.org/${account?.username}`}
                             alt="Profile"
                             className="w-24 h-24 rounded-full object-cover border-2 border-orange-500"
                         />
