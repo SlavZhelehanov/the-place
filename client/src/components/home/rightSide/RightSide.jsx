@@ -4,13 +4,13 @@ import UserInfo from "../user/UserInfo";
 import Birthdays from "./Birthdays";
 import FriendRequests from "./FriendRequests";
 
-export default function RightSide({ userId }) {
+export default function RightSide({ user }) {
     return (
         <div className="flex flex-col gap-6">
-            {userId ?
+            {user ?
                 (<>
-                    <UserInfo userId={userId} />
-                    <UserCard userId={userId} />
+                    <UserInfo user={user} />
+                    <UserCard user={user} />
                 </>)
                 : null}
             <FriendRequests />

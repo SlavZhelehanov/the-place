@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 
-export default function UserCard({ userId }) {
+export default function UserCard({ user }) {
     return (
         <div className="p-4 bg-white rounded-lg shadow-md text-sm flex flex-col gap-4">
             <div className="flex justify-between items-center font-medium">

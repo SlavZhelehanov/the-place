@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import requester from "../../utils/requester";
 
 const SERVER_URL = "http://localhost:3030/users/me";
 
@@ -12,19 +13,11 @@ export default function Settings() {
     useEffect(() => {
         const token = localStorage.getItem("token");
 
-        fetch(SERVER_URL, {
-            method: "GET",
-            headers: { "X-Authorization": token }
-        }).then(res => {
-            if (res.statusText === "Forbidden") {
-                logout();
-                navigate("/auth/login");
-            } else return res.json();
-        }).then(setAccount).catch(err => {
+        requester.get(SERVER_URL, null, { headers: { "X-Authorization": token } }).then(setAccount).catch(err => {
+            console.log(err.message);
             logout();
             navigate("/auth/login");
         });
-
     }, []);
 
     return (
@@ -33,15 +26,15 @@ export default function Settings() {
                 <div className="flex flex-col items-center">
                     <div className="relative">
                         <img
-                            src={account?.profilePicture || `https://robohash.org/${account?.username}`}
+                            src={account?.avatar}
                             alt="Profile"
                             className="w-24 h-24 rounded-full object-cover border-2 border-orange-500"
                         />
                         <Link
-                            to="/auth/update-profile-picture"
+                            to="/auth/profile"
                             className="absolute bottom-0 right-0 bg-orange-500 text-white text-xs px-2 py-1 rounded-full hover:bg-orange-600"
                         >
-                            Edit
+                            Profile
                         </Link>
                     </div>
                     <h2 className="text-xl font-semibold text-gray-800 mt-4">{account?.username || "Username"}</h2>
