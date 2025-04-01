@@ -16,7 +16,7 @@ export default function BurgerMenu() {
             </div>
 
             {spread &&
-                <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] bg-white flex flex-col items-center justify-center gap-8 font-medium text-xl z-10">
+                <div className="absolute left-0 top-24 w-full h-[calc(100vh-96px)] bg-white flex flex-col items-center justify-center gap-8 font-medium text-xl z-10" onClick={() => setSpread(prev => !prev)}>
                     <Link to="/" className="flex items-center gap-2"><FaHouse className="text-orange-400" /><span>Home</span></Link>
                     {isAuthenticated ? (<>
                         <Link to="/" className="flex items-center gap-2"><FaUserGroup className="text-orange-400" /><span>Groups</span></Link>
