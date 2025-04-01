@@ -15,10 +15,13 @@ export default function ProfileCard() {
 
     useEffect(() => {
         if (token) {
-            auth(token).then(data => {
-                setUserData(data);
-                requester.get(SERVER_URL, null, {}).then(data => setFollowersCount(data[userData._id]?.length || 0));
+            auth(token).then(user => {
+                setUserData(user);
+                requester.get(SERVER_URL, null, {}).then(data => {
+                    setFollowersCount(data[user._id]?.length || 0);
+                });
             });
+            
         } else requester.get(SERVER_URL, null, {}).then(data => {
             let sum = 0;
             Object.values(data).forEach(item => sum += item.length);
