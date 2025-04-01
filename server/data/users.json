@@ -1,0 +1,83 @@
+{
+    "50f47869-97c1-4695-a48d-1d1a5aab35e9": {
+        "fullName": "Milena Milenova",
+        "email": "milena@abv.bg",
+        "username": "milenkata",
+        "birthDate": "1996-10-28",
+        "avatar": "https://robohash.org/milenkata",
+        "createdAt": 1732130472924,
+        "_id": "50f47869-97c1-4695-a48d-1d1a5aab35e9"
+    },
+    "dca62a05-57fa-4d1a-8ef8-f76af4fc3489": {
+        "fullName": "Yasen Yasenov",
+        "email": "yasen@abv.bg",
+        "username": "yasen",
+        "birthDate": "1994-05-19",
+        "avatar": "https://robohash.org/yasen",
+        "createdAt": 1732230300838,
+        "_id": "dca62a05-57fa-4d1a-8ef8-f76af4fc3489"
+    },
+    "cd01f8d6-6089-4394-aa91-ecda0ce6d28a": {
+        "fullName": "Marina Marinova",
+        "email": "marina@abv.bg",
+        "username": "marinata",
+        "birthDate": "2004-12-21",
+        "avatar": "https://robohash.org/marinata",
+        "createdAt": 1732330044622,
+        "_id": "cd01f8d6-6089-4394-aa91-ecda0ce6d28a"
+    },
+    "bbc1ecbc-4b73-483a-b2d5-3652dd3813e8": {
+        "fullName": "Asen Asenov",
+        "email": "asen@abv.bg",
+        "username": "aas_en",
+        "birthDate": "1991-02-06",
+        "avatar": "https://robohash.org/aas_en",
+        "createdAt": 1732429138189,
+        "_id": "bbc1ecbc-4b73-483a-b2d5-3652dd3813e8"
+    },
+    "c984b7d0-5496-44c3-84a7-700dfadc4ec6": {
+        "fullName": "Kalina Kalinova",
+        "email": "kalina@abv.bg",
+        "username": "kalinka_malinka",
+        "birthDate": "2001-06-13",
+        "avatar": "https://robohash.org/kalinka_malinka",
+        "createdAt": 1732526429191,
+        "_id": "c984b7d0-5496-44c3-84a7-700dfadc4ec6"
+    },
+    "381ea288-ff37-41b4-8869-538480d816a3": {
+        "fullName": "Dimitrina Dimitrova",
+        "email": "dimitrina@abv.bg",
+        "username": "dim_diri_ri_rim",
+        "birthDate": "2001-08-10",
+        "avatar": "https://robohash.org/dim_diri_ri_rim",
+        "createdAt": 1732626801327,
+        "_id": "381ea288-ff37-41b4-8869-538480d816a3"
+    },
+    "35c62d76-8152-4626-8712-eeb96381bea8": {
+        "fullName": "Peter Perov",
+        "email": "peter@abv.bg",
+        "username": "Peter",
+        "birthDate": "2000-10-10",
+        "avatar": "https://robohash.org/peter",
+        "createdAt": 1732905015851,
+        "_id": "35c62d76-8152-4626-8712-eeb96381bea8"
+    },
+    "847ec027-f659-4086-8032-5173e2f9c93a": {
+        "fullName": "George Georgiev",
+        "email": "george@abv.bg",
+        "username": "George",
+        "birthDate": "1999-11-11",
+        "avatar": "https://robohash.org/george",
+        "createdAt": 1732826801327,
+        "_id": "847ec027-f659-4086-8032-5173e2f9c93a"
+    },
+    "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
+        "fullName": "Admin van Buren",
+        "email": "admin@abv.bg",
+        "username": "Admin",
+        "birthDate": "1998-12-12",
+        "avatar": "https://robohash.org/admin",
+        "createdAt": 1732726801327,
+        "_id": "60f0cf0b-34b0-4abd-9769-8c42f830dffc"
+    }
+}
