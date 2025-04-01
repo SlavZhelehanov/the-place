@@ -10,7 +10,8 @@ export default function Logout() {
     const token = localStorage.getItem("token");
 
     useEffect(() => {
-        if (isAuthenticated) {
+        if (isAuthenticated && token) {
+            
             fetch(SERVER_URL, {
                 method: "GET",
                 headers: { "X-Authorization": token }

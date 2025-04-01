@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import requester from "../../utils/requester";
 
 const SERVER_URL = "http://localhost:3030/users/login";
 
@@ -26,30 +27,23 @@ export default function LoginForm() {
         const signal = controller.signal;
 
         try {
-            const response = await fetch(SERVER_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    email: data.email,
-                    password: data.password,
-                }),
-                signal,
-            });
+            const response = await requester.post(SERVER_URL, {
+                email: data.email,
+                password: data.password,
+            }, { signal });
 
-            const result = await response.json();
-
-            if (response.ok) {
+            if (!response.code) {
                 setMessage({ text: "Login successful!", type: "success" });
-                login(result);
-                navigate("/");
+                login(response);
+                return navigate("/");
             } else {
-                setMessage({ text: result.message || "Login failed!", type: "error" });
+                setMessage({ text: response.message || "Login failed!", type: "error" });
             }
         } catch (error) {
             if (error.name === "AbortError") {
                 console.log("Request was aborted");
             } else {
-                setMessage({ text: "Network error. Try again!", type: "error" });
+                setMessage({ text: error.message, type: "error" });
             }
         } finally {
             setLoading(false);

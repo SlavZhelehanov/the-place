@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Link, useNavigate } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import requester from "../../utils/requester";
 
 const SERVER_URL = "http://localhost:3030/users/register";
 
@@ -26,37 +27,28 @@ export default function RegisterForm() {
             isClickedRef.current = false; // Reset ref after showing error
             return;
         }
+        if (!data.birthDate) data.birthDate = "";
+        if (!data.avatar) data.avatar = `https://robohash.org/${data.username}`;
 
         setLoading(true);
         const controller = new AbortController();
         const signal = controller.signal;
 
         try {
-            const response = await fetch(SERVER_URL, {
-                method: "POST",
-                headers: { "Content-Type": "application/json" },
-                body: JSON.stringify({
-                    email: data.email,
-                    username: data.username,
-                    password: data.password,
-                }),
-                signal,
-            });
+            const response = await requester.post(SERVER_URL, { ...data, createdAt: Date.now() }, { signal });
 
-            const result = await response.json();
-
-            if (response.ok) {
+            if (!response.code) {
                 setMessage({ text: "Registration successful!", type: "success" });
-                login(result);
+                login(response);
                 navigate("/");
             } else {
-                setMessage({ text: result.message || "Registration failed!", type: "error" });
+                setMessage({ text: response.message || "Registration failed!", type: "error" });
             }
         } catch (error) {
             if (error.name === "AbortError") {
                 console.log("Request was aborted");
             } else {
-                setMessage({ text: "Network error. Try again!", type: "error" });
+                setMessage({ text: error.message, type: "error" });
             }
         } finally {
             setLoading(false);
@@ -92,20 +84,68 @@ export default function RegisterForm() {
 
                 <form onSubmit={handleRegister} className="space-y-5">
                     <div>
+                        <label className="block text-sm font-medium text-gray-700">Full Name</label>
+                        <input
+                            type="text"
+                            name="fullName"
+                            required
+                            className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+                        />
+                    </div>
+                    <div>
                         <label className="block text-sm font-medium text-gray-700">Email</label>
-                        <input type="email" name="email" required className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none" />
+                        <input
+                            type="email"
+                            name="email"
+                            required
+                            className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+                        />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Username</label>
-                        <input type="text" name="username" required className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none" />
+                        <input
+                            type="text"
+                            name="username"
+                            required
+                            className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+                        />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Password</label>
-                        <input type="password" name="password" required className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none" />
+                        <input
+                            type="password"
+                            name="password"
+                            required
+                            className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+                        />
                     </div>
                     <div>
                         <label className="block text-sm font-medium text-gray-700">Repeat Password</label>
-                        <input type="password" name="repeat_password" required className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none" />
+                        <input
+                            type="password"
+                            name="repeat_password"
+                            required
+                            className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+                        />
+                    </div>
+                    {/* Optional Birth Date Field */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Birth Date (Optional)</label>
+                        <input
+                            type="date"
+                            name="birthDate"
+                            className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+                        />
+                    </div>
+                    {/* Optional Avatar Picture Field */}
+                    <div>
+                        <label className="block text-sm font-medium text-gray-700">Avatar Picture (Optional)</label>
+                        <input
+                            type="url"
+                            name="avatar"
+                            placeholder="Enter a link to your avatar"
+                            className="w-full mt-1 p-3 border rounded-xl focus:ring-2 focus:ring-blue-400 outline-none"
+                        />
                     </div>
                     <button
                         type="submit"
