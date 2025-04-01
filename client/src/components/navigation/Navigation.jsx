@@ -4,6 +4,7 @@ import { Link } from "react-router";
 import BurgerMenu from "./BurgerMenu";
 import { FaHouse, FaUsers, FaBookOpenReader, FaRegCircleUser, FaRegMessage, FaRegBell, FaCircleUser, FaGear, FaArrowRightFromBracket, FaSistrix } from "react-icons/fa6";
 import { useAuth } from "../../contexts/AuthContext";
+import auth from "../../utils/fetchUser";
 
 export default function Navigation() {
     const { isAuthenticated } = useAuth();
@@ -11,13 +12,9 @@ export default function Navigation() {
     const [profileImage, setProfileImage] = useState('');
 
     useEffect(() => {
-        const userData = localStorage.getItem("user");
+        const token = localStorage.getItem("token");
 
-        if (userData) {
-            const { profileImage, username } = JSON.parse(userData);
-
-            setProfileImage(profileImage || `https://robohash.org/${username}`);
-        }
+        if (token) auth(token).then(user => setProfileImage(user.avatar));
     }, [isAuthenticated]);
 
     return (
