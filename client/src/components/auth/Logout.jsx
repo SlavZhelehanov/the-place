@@ -21,7 +21,7 @@ export default function Logout() {
                 navigate("/");
             }).catch(err => console.log(err));
         }
-    }, [isAuthenticated]);
+    }, [token]);
 
     return (
         <div className="text-center">
