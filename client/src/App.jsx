@@ -25,11 +25,11 @@ export default function App() {
             <div className="px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64 bg-slate-100">
                 <Routes>
                     <Route index element={<HomePage />} />
+                    <Route path="/auth/:id/profile" element={<UserProfile />} />
 
                     <Route path="/auth/register" element={<ProtectedFromUserRoute><RegisterForm /></ProtectedFromUserRoute>} />
                     <Route path="/auth/login" element={<ProtectedFromUserRoute><LoginForm /></ProtectedFromUserRoute>} />
 
-                    <Route path="/auth/profile" element={<ProtectedForUserRoute><UserProfile /></ProtectedForUserRoute>} />
                     <Route path="/auth/settings" element={<ProtectedForUserRoute><Settings /></ProtectedForUserRoute>} />
                     <Route path="/auth/logout" element={<ProtectedForUserRoute><Logout /></ProtectedForUserRoute>} />
 
