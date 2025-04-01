@@ -1,0 +1,38 @@
+{
+    "dca62a05-57fa-4d1a-8ef8-f76af4fc3489": [
+        {
+            "fullName": "Milena Milenova",
+            "avatar": "https://robohash.org/milenkata",
+            "_id": "50f47869-97c1-4695-a48d-1d1a5aab35e9"
+        },
+        {
+            "fullName": "Marina Marinova",
+            "avatar": "https://robohash.org/marinata",
+            "_id": "cd01f8d6-6089-4394-aa91-ecda0ce6d28a"
+        },
+        {
+            "fullName": "Asen Asenov",
+            "avatar": "https://robohash.org/aas_en",
+            "_id": "bbc1ecbc-4b73-483a-b2d5-3652dd3813e8"
+        }
+    ],
+    "c984b7d0-5496-44c3-84a7-700dfadc4ec6": [
+        {
+            "fullName": "Dimitrina Dimitrova",
+            "avatar": "https://robohash.org/dim_diri_ri_rim",
+            "_id": "381ea288-ff37-41b4-8869-538480d816a3"
+        }
+    ],
+    "35c62d76-8152-4626-8712-eeb96381bea8": [
+        {
+            "fullName": "George Georgiev",
+            "avatar": "https://robohash.org/george",
+            "_id": "847ec027-f659-4086-8032-5173e2f9c93a"
+        },
+        {
+            "fullName": "Admin van Buren",
+            "avatar": "https://robohash.org/admin",
+            "_id": "60f0cf0b-34b0-4abd-9769-8c42f830dffc"
+        }
+    ]
+}
