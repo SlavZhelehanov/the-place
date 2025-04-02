@@ -12,6 +12,8 @@ import Logout from './components/auth/Logout';
 import HomePage from './components/home/HomePage';
 import UserProfile from './components/auth/UserProfile';
 import PageNotFound from './components/404/PageNotFound';
+import PostDetails from './components/post/Details';
+import EditPost from './components/post/Edit';
 
 export default function App() {
     return (
@@ -26,11 +28,13 @@ export default function App() {
                 <Routes>
                     <Route index element={<HomePage />} />
                     <Route path="/auth/:id/profile" element={<UserProfile />} />
+                    <Route path="/post/:id/details" element={<PostDetails />} />
 
                     <Route path="/auth/register" element={<ProtectedFromUserRoute><RegisterForm /></ProtectedFromUserRoute>} />
                     <Route path="/auth/login" element={<ProtectedFromUserRoute><LoginForm /></ProtectedFromUserRoute>} />
 
                     <Route path="/auth/settings" element={<ProtectedForUserRoute><Settings /></ProtectedForUserRoute>} />
+                    <Route path="/post/:id/edit" element={<ProtectedForUserRoute><EditPost /></ProtectedForUserRoute>} />
                     <Route path="/auth/logout" element={<ProtectedForUserRoute><Logout /></ProtectedForUserRoute>} />
 
                     <Route path="*" element={<PageNotFound />} />
