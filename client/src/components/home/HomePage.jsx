@@ -3,17 +3,44 @@ import Center from "./center/Stories";
 import LeftSide from "./leftSide/LeftSide";
 import RightSide from "./rightSide/RightSide";
 import AllPosts from "./center/AllPosts";
+import { useState, useEffect } from "react";
+import requester from "../../utils/requester";
+
+const SERVER_POSTS_URL = "http://localhost:3030/data/posts";
 
 export default function HomePage() {
+    const [allPosts, setAllPosts] = useState([]);
+
+    useEffect(() => {
+        const controller = new AbortController();
+        const signal = controller.signal;
+
+        requester.get(SERVER_POSTS_URL, null, { signal })
+            .then(setAllPosts)
+            .catch(err => {
+                if (err.name === "AbortError") {
+                    console.log("Posts request aborted");
+                } else {
+                    console.log(err.message);
+                }
+            });
+
+        return () => controller.abort();
+    }, []);
+
+    function addPostHandler(data) {
+        setAllPosts(prev => [data, ...prev]);
+    }
+
     return (
         <div className="flex gap-6 pt-6">
-            <div className="hidden xl:block w-[20%]"><LeftSide type="home"/></div>
+            <div className="hidden xl:block w-[20%]"><LeftSide type="home" /></div>
 
             <div className="w-full lg:w-[70%] xl:w-[50%]">
                 <div className="flex flex-col gap-6">
                     <Center />
-                    <AddPost />
-                    <AllPosts />
+                    <AddPost useAllPosts={addPostHandler} />
+                    <AllPosts posts={allPosts} />
                 </div>
             </div>
 
