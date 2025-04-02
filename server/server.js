@@ -1388,7 +1388,7 @@
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
             },
             "35c62d76-8152-4626-8712-eeb96381bea8": {
-                fullname: "Peter Perov",
+                fullName: "Peter Perov",
                 email: "peter@abv.bg",
                 username: "Peter",
                 birthDate: "2000-10-10",
@@ -1397,7 +1397,7 @@
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
             },
             "847ec027-f659-4086-8032-5173e2f9c93a": {
-                fullname: "George Georgiev",
+                fullName: "George Georgiev",
                 email: "george@abv.bg",
                 username: "George",
                 birthDate: "1999-11-11",
@@ -1406,7 +1406,7 @@
                 hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
             },
             "60f0cf0b-34b0-4abd-9769-8c42f830dffc": {
-                fullname: "Admin van Buren",
+                fullName: "Admin van Buren",
                 email: "admin@abv.bg",
                 username: "Admin",
                 birthDate: "1998-12-12",
@@ -1419,7 +1419,143 @@
         }
     };
     var seedData = {
-        posts: [],
+        posts: [
+            {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "fullName": "Peter Petrov",
+                "avatar": "https://robohash.org/peter",
+                "image": "https://images.pexels.com/photos/298723/pexels-photo-298723.jpeg?auto=compress&cs=tinysrgb&w=600",
+                "content": "Sefteto",
+                "_createdOn": 1743545145579,
+                "_id": "a5c32a7d-76b1-4ad7-a415-0eb59ace03cb"
+            },
+            {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "fullName": "Peter Petrov",
+                "avatar": "https://robohash.org/peter",
+                "image": "https://images.pexels.com/photos/5912675/pexels-photo-5912675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Second post from me 😊",
+                "_createdOn": 1743545364116,
+                "_id": "c08ebd49-d1ab-454a-8212-70dda249b407"
+            },
+            {
+                "_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+                "avatar": "https://robohash.org/peter",
+                "fullName": "Peter Petrov",
+                "image": "https://images.pexels.com/photos/3718061/pexels-photo-3718061.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "The third poooooost 😯",
+                "_createdOn": 1743545412720,
+                "_id": "3b768199-e22e-4b34-865a-e73ccbbd2f31"
+            },
+            {
+                "_ownerId": "c984b7d0-5496-44c3-84a7-700dfadc4ec6",
+                "fullName": "Kalina Kalinova",
+                "avatar": "https://robohash.org/kalinka_malinka",
+                "image": "https://images.pexels.com/photos/1875997/pexels-photo-1875997.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Some bricks",
+                "_createdOn": 1743545494337,
+                "_id": "b7d06153-cd32-48e4-9aa4-6a61617dc0a2"
+            },
+            {
+                "_ownerId": "c984b7d0-5496-44c3-84a7-700dfadc4ec6",
+                "fullName": "Kalina Kalinova",
+                "avatar": "https://robohash.org/kalinka_malinka",
+                "image": "https://images.pexels.com/photos/237950/pexels-photo-237950.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Some stones 😊",
+                "_createdOn": 1743545533565,
+                "_id": "9125abfa-40f7-448a-b92f-dc57b2ea4887"
+            },
+            {
+                "_ownerId": "50f47869-97c1-4695-a48d-1d1a5aab35e9",
+                "fullName": "Milena Milenova",
+                "avatar": "https://robohash.org/milenkata",
+                "image": "https://images.pexels.com/photos/2325447/pexels-photo-2325447.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "In my TODO List ❤️",
+                "_createdOn": 1743545638383,
+                "_id": "0c01c9e6-160f-4e38-ba4f-4a9de73a9c13"
+            },
+            {
+                "_ownerId": "50f47869-97c1-4695-a48d-1d1a5aab35e9",
+                "fullName": "Milena Milenova",
+                "avatar": "https://robohash.org/milenkata",
+                "image": "https://images.pexels.com/photos/158063/bellingrath-gardens-alabama-landscape-scenic-158063.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "In one word - beaty 😍",
+                "_createdOn": 1743545694950,
+                "_id": "eb4b86fa-6910-4ea0-9fef-1d306fdbd1a8"
+            },
+            {
+                "_ownerId": "50f47869-97c1-4695-a48d-1d1a5aab35e9",
+                "fullName": "Milena Milenova",
+                "avatar": "https://robohash.org/milenkata",
+                "image": "https://images.pexels.com/photos/886521/pexels-photo-886521.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "To think about it 🤔",
+                "_createdOn": 1743545737281,
+                "_id": "6eb52405-38c7-4f69-a38f-876a50067759"
+            },
+            {
+                "_ownerId": "dca62a05-57fa-4d1a-8ef8-f76af4fc3489",
+                "fullName": "Yasen Yasenov",
+                "avatar": "https://robohash.org/yasen",
+                "image": "https://images.pexels.com/photos/1133957/pexels-photo-1133957.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Biiiiiiiiiiiiiirddd...",
+                "_createdOn": 1743545795091,
+                "_id": "0956d3ee-e9a6-4673-b77a-1efd79d080ee"
+            },
+            {
+                "_ownerId": "cd01f8d6-6089-4394-aa91-ecda0ce6d28a",
+                "fullName": "Marina Marinova",
+                "avatar": "https://robohash.org/marinata",
+                "image": "https://images.pexels.com/photos/906150/pexels-photo-906150.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Um-m-m-m-m-m... 😑",
+                "_createdOn": 1743545871178,
+                "_id": "66014f92-a72b-4fc5-af98-f2a0aeb9a510"
+            },
+            {
+                "_ownerId": "cd01f8d6-6089-4394-aa91-ecda0ce6d28a",
+                "fullName": "Marina Marinova",
+                "avatar": "https://robohash.org/marinata",
+                "image": "https://images.pexels.com/photos/1108572/pexels-photo-1108572.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "The LAMBAAA ",
+                "_createdOn": 1743545895825,
+                "_id": "ad8511f5-c4ee-42a2-bb36-50987fcdd03e"
+            },
+            {
+                "_ownerId": "cd01f8d6-6089-4394-aa91-ecda0ce6d28a",
+                "fullName": "Marina Marinova",
+                "avatar": "https://robohash.org/marinata",
+                "image": "https://images.pexels.com/photos/1128797/pexels-photo-1128797.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Feeling old 🧓 ",
+                "_createdOn": 1743545934061,
+                "_id": "1822ad19-6fa5-4bdd-931f-d0e0247da084"
+            },
+            {
+                "_ownerId": "bbc1ecbc-4b73-483a-b2d5-3652dd3813e8",
+                "fullName": "Asen Asenov",
+                "avatar": "https://robohash.org/aas_en",
+                "image": "https://images.pexels.com/photos/2116475/pexels-photo-2116475.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Some one for adventure??? 😈",
+                "_createdOn": 1743546039903,
+                "_id": "c1cb7951-4d8c-40f9-8e33-c89cc0fff855"
+            },
+            {
+                "_ownerId": "bbc1ecbc-4b73-483a-b2d5-3652dd3813e8",
+                "avatar": "https://robohash.org/aas_en",
+                "fullName": "Asen Asenov",
+                "image": "https://images.pexels.com/photos/2393835/pexels-photo-2393835.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "My love 😍 ",
+                "_createdOn": 1743546065645,
+                "_id": "02c536c4-4207-4f1a-890a-2f325ad01ee1"
+            },
+            {
+                "_ownerId": "bbc1ecbc-4b73-483a-b2d5-3652dd3813e8",
+                "fullName": "Asen Asenov",
+                "avatar": "https://robohash.org/aas_en",
+                "image": "https://images.pexels.com/photos/681795/pexels-photo-681795.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+                "content": "Brum-brum",
+                "_createdOn": 1743546473114,
+                "_id": "07e08156-fae2-4eb6-9883-b584365e831f"
+            }
+        ],
         comments: [],
         followers: [
             {
@@ -1427,12 +1563,12 @@
                 fans: [
                     {
                         _id: "381ea288-ff37-41b4-8869-538480d816a3",
-                        fullname: "Dimitrina Dimitrova",
+                        fullName: "Dimitrina Dimitrova",
                         avatar: "https://robohash.org/dim_diri_ri_rim"
                     },
                     {
                         _id: "35c62d76-8152-4626-8712-eeb96381bea8",
-                        fullname: "Peter Petrov",
+                        fullName: "Peter Petrov",
                         avatar: "https://robohash.org/peter"
                     },
                 ]
@@ -1442,22 +1578,22 @@
                 fans: [
                     {
                         _id: "381ea288-ff37-41b4-8869-538480d816a3",
-                        fullname: "Dimitrina Dimitrova",
+                        fullName: "Dimitrina Dimitrova",
                         avatar: "https://robohash.org/dim_diri_ri_rim"
                     },
                     {
                         _id: "35c62d76-8152-4626-8712-eeb96381bea8",
-                        fullname: "Peter Petrov",
+                        fullName: "Peter Petrov",
                         avatar: "https://robohash.org/peter"
                     },
                     {
                         _id: "60f0cf0b-34b0-4abd-9769-8c42f830dffc",
-                        fullname: "Admin van Buren",
+                        fullName: "Admin van Buren",
                         avatar: "https://robohash.org/admin"
                     },
                     {
                         _id: "bbc1ecbc-4b73-483a-b2d5-3652dd3813e8",
-                        fullname: "Asen Asenov",
+                        fullName: "Asen Asenov",
                         avatar: "https://robohash.org/aas_en"
                     },
                 ]
