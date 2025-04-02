@@ -49,7 +49,8 @@ export default function UserProfile() {
 
         async function fetchUserData() {
             try {
-                auth(token).then(setUser);//requester.get(`http://localhost:3030/users/${id}`, null, { signal });
+                requester.get(`http://localhost:3030/jsonstore/users`, null, { signal }).then(data => setUser(data[id]));
+                // auth(token).then(setUser);//requester.get(`http://localhost:3030/users/${id}`, null, { signal });
                 const postsData = await requester.get(`http://localhost:3030/data/posts`, null, { signal });
 
                 setPosts(postsData.filter(p => p._ownerId === id));
@@ -106,6 +107,9 @@ export default function UserProfile() {
     if (notFound) return <PageNotFound />
 
     if (!user) return <Spinner />
+
+    console.log(user);
+    
 
     return (
         <div className="flex gap-6 pt-6">
