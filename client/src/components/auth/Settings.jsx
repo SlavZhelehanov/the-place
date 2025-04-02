@@ -31,7 +31,7 @@ export default function Settings() {
                             className="w-24 h-24 rounded-full object-cover border-2 border-orange-500"
                         />
                         <Link
-                            to="/auth/profile"
+                            to={`/auth/${account?._id}/profile`}
                             className="absolute bottom-0 right-0 bg-orange-500 text-white text-xs px-2 py-1 rounded-full hover:bg-orange-600"
                         >
                             Profile
