@@ -8,14 +8,13 @@ const SERVER_URL = "http://localhost:3030/users/login";
 export default function LoginForm() {
     const [message, setMessage] = useState({ text: "", type: "" });
     const [loading, setLoading] = useState(false);
-    const isClickedRef = useRef(false); // Ref to track if the button was clicked
+    const isClickedRef = useRef(false);
     const navigate = useNavigate();
-    const { login } = useAuth();
+    const { login, updateLikedPosts } = useAuth();
 
     async function handleLogin(event) {
         event.preventDefault();
 
-        // Prevent double clicking using the ref
         if (isClickedRef.current) return;
         isClickedRef.current = true;
 
@@ -32,6 +31,10 @@ export default function LoginForm() {
                 password: data.password,
             }, { signal });
 
+            const allPosts = await requester.get("http://localhost:3030/data/likes", null, { headers: { "X-Authorization": response.accessToken }, signal });
+            const likedPosts = allPosts?.filter(post => post._ownerId === response._id);
+
+            if (likedPosts) updateLikedPosts(likedPosts);
             if (!response.code) {
                 setMessage({ text: "Login successful!", type: "success" });
                 login(response);
@@ -47,7 +50,7 @@ export default function LoginForm() {
             }
         } finally {
             setLoading(false);
-            isClickedRef.current = false; // Reset ref after request completion
+            isClickedRef.current = false;
         }
 
         return () => controller.abort();

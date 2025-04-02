@@ -4,18 +4,18 @@ import { useAuth } from "../../contexts/AuthContext";
 import requester from "../../utils/requester";
 
 const SERVER_URL = "http://localhost:3030/users/register";
+const SERVER_JSONSTORE_URL = "http://localhost:3030/jsonstore/users/";
 
 export default function RegisterForm() {
     const [message, setMessage] = useState({ text: "", type: "" });
     const [loading, setLoading] = useState(false);
-    const isClickedRef = useRef(false); // Ref to track if the button was clicked
+    const isClickedRef = useRef(false);
     const navigate = useNavigate();
     const { login } = useAuth();
 
     async function handleRegister(event) {
         event.preventDefault();
-
-        // Prevent double clicking using the ref
+        
         if (isClickedRef.current) return;
         isClickedRef.current = true;
 
@@ -24,7 +24,7 @@ export default function RegisterForm() {
 
         if (data.password !== data.repeat_password) {
             setMessage({ text: "Passwords do not match!", type: "error" });
-            isClickedRef.current = false; // Reset ref after showing error
+            isClickedRef.current = false; 
             return;
         }
         if (!data.birthDate) data.birthDate = "";
@@ -36,13 +36,14 @@ export default function RegisterForm() {
 
         try {
             const response = await requester.post(SERVER_URL, { ...data, createdAt: Date.now() }, { signal });
+            const res_store = await requester.post(SERVER_JSONSTORE_URL, { ...data, createdAt: Date.now() }, { signal });
 
-            if (!response.code) {
+            if (!response.code && !res_store.code) {
                 setMessage({ text: "Registration successful!", type: "success" });
                 login(response);
                 navigate("/");
             } else {
-                setMessage({ text: response.message || "Registration failed!", type: "error" });
+                setMessage({ text: response.message || res_store.message || "Registration failed!", type: "error" });
             }
         } catch (error) {
             if (error.name === "AbortError") {
@@ -52,7 +53,7 @@ export default function RegisterForm() {
             }
         } finally {
             setLoading(false);
-            isClickedRef.current = false; // Reset ref after request completion
+            isClickedRef.current = false; 
         }
 
         return () => controller.abort();
