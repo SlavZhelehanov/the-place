@@ -1,6 +1,7 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "../../contexts/AuthContext";
+import requester from "../../utils/requester";
 
 const SERVER_URL = "http://localhost:3030/users/logout";
 
@@ -11,11 +12,8 @@ export default function Logout() {
 
     useEffect(() => {
         if (isAuthenticated && token) {
-            
-            fetch(SERVER_URL, {
-                method: "GET",
-                headers: { "X-Authorization": token }
-            }).then(res => {
+
+            requester.get(SERVER_URL, null, { headers: { "X-Authorization": token } }).then(res => {
                 logout();
 
                 navigate("/");

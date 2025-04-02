@@ -27,25 +27,28 @@ export default function Navigation() {
             <div className="hidden md:flex w-[50%] text-sm items-center gap-2">
                 <div className="flex gap-6 text-gray-600">
                     <Link to="/" className="flex items-center gap-2"><FaHouse /><span>Home</span></Link>
-                    <Link to="/" className="flex items-center gap-2"><FaUsers /><span>Friends</span></Link>
-                    <Link to="/" className="flex items-center gap-2"><FaBookOpenReader /><span>Stories</span></Link>
+                    {/* //TODO: When add databse */}
+                    {/* <Link to="/" className="flex items-center gap-2"><FaUsers /><span>Friends</span></Link>
+                    <Link to="/" className="flex items-center gap-2"><FaBookOpenReader /><span>Stories</span></Link> */}
                 </div>
-                <div className="flex items-center p-2 bg-slate-100 rounded-lg w-full">
+                {/* //TODO: When add databse */}
+                {/* <div className="flex items-center p-2 bg-slate-100 rounded-lg w-full">
                     <FaSistrix className="text-gray-500 mr-2 text-lg" />
                     <input
                         type="text"
                         placeholder="Search..."
                         className="bg-transparent outline-none text-gray-600 flex-1"
                     />
-                </div>
+                </div> */}
             </div>
 
             <div className="w-[30%] flex items-center gap-4 xl:gap-8 justify-end">
                 {isAuthenticated
                     ? <div className="flex items-center gap-6">
-                        <div className="cursor-pointer"><FaUsers /></div>
+                        {/* //TODO: When add databse */}
+                        {/* <div className="cursor-pointer"><FaUsers /></div>
                         <div className="cursor-pointer"><FaRegMessage /></div>
-                        <div className="cursor-pointer"><FaRegBell /></div>
+                        <div className="cursor-pointer"><FaRegBell /></div> */}
                         <div className="cursor-pointer" onClick={() => setShowDialog(prev => !prev)}><FaCircleUser /></div>
                         {showDialog && (
                             <div className="absolute top-16 right-4 bg-white shadow-lg rounded-lg p-4 w-64 z-20" onClick={() => setShowDialog(prev => !prev)}>

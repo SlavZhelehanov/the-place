@@ -46,7 +46,7 @@ export default function LoginForm() {
             if (error.name === "AbortError") {
                 console.log("Request was aborted");
             } else {
-                setMessage({ text: error.message, type: "error" });
+                setMessage({ text: "Wrong credentials", type: "error" });
             }
         } finally {
             setLoading(false);

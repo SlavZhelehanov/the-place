@@ -1,41 +1,48 @@
-// authContext.js
 import { createContext, useContext, useState, useEffect } from 'react';
 
-// Create Context
 const AuthContext = createContext();
 
-// Custom hook to use the AuthContext
 export const useAuth = () => {
     return useContext(AuthContext);
 };
 
-// AuthProvider component to wrap your app and provide context
 export const AuthProvider = ({ children }) => {
     const [isAuthenticated, setIsAuthenticated] = useState(false);
-
-    // Check if the user is authenticated when the app loads
+    // const [user, setUser] = useState(null);
+    const [followers, setFollowers] = useState([]);
+    const [following, setFollowing] = useState([]);
+    const [likedPosts, setLikedPosts] = useState([]);
+    
     useEffect(() => {
         const token = localStorage.getItem("token");
-        const user = localStorage.getItem("user");
 
-        if (token && user) return setIsAuthenticated(true);
+        if (token) return setIsAuthenticated(true);
     }, []);
 
-    // Login and Logout functions
-    const login = ({ email, username, _id, accessToken }) => {
+    const login = ({ fullname, avatar, email, username, _id, accessToken }) => {
         setIsAuthenticated(true);
-        localStorage.setItem("token", accessToken); // Replace with actual token logic
-        localStorage.setItem("user", JSON.stringify({ email, username, _id })); // Replace with actual token logic
+        localStorage.setItem("token", accessToken);
     };
 
     const logout = () => {
         setIsAuthenticated(false);
         localStorage.removeItem("token");
-        localStorage.removeItem("user");
     };
 
+    const updateFollowers = (newFollowers) => {
+        setFollowers(newFollowers);
+    };
+
+    const updateFollowing = (newFollowing) => {
+        setFollowing(newFollowing);
+    };
+
+    const updateLikedPosts = (newLikedPosts) => {
+        setLikedPosts(newLikedPosts);
+    }
+
     return (
-        <AuthContext.Provider value={{ isAuthenticated, login, logout }}>
+        <AuthContext.Provider value={{ isAuthenticated, login, logout, updateLikedPosts, updateFollowers, updateFollowing, followers, following, likedPosts }}>
             {children}
         </AuthContext.Provider>
     );

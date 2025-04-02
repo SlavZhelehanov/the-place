@@ -8,6 +8,7 @@ import { useNavigate, useParams } from "react-router";
 import auth from "../../utils/fetchUser";
 import PageNotFound from "../404/PageNotFound";
 import Spinner from "../Spinner";
+import { SidebarProvider } from "../../contexts/SidebarContext";
 
 // const SERVER_USERDATA_URL = "http://localhost:3030/users/me";
 const SERVER_FOLLOWERS_URL = "http://localhost:3030/jsonstore/followers";
@@ -48,15 +49,10 @@ export default function UserProfile() {
 
         async function fetchUserData() {
             try {
-                const userData = await auth();//requester.get(`http://localhost:3030/users/${id}`, null, { signal });
+                auth(token).then(setUser);//requester.get(`http://localhost:3030/users/${id}`, null, { signal });
                 const postsData = await requester.get(`http://localhost:3030/data/posts`, null, { signal });
 
                 setPosts(postsData.filter(p => p._ownerId === id));
-
-                console.log(postsData);
-                
-
-                setUser(userData[id]);
             } catch (err) {
                 if (err.name === "AbortError") {
                     console.log("User data request aborted");
@@ -113,7 +109,7 @@ export default function UserProfile() {
 
     return (
         <div className="flex gap-6 pt-6">
-            <div className="hidden xl:block w-[20%]"><LeftSide type="profile" /></div>
+            <SidebarProvider><div className="hidden xl:block w-[20%]"><LeftSide type="profile" /></div></SidebarProvider>
 
             <div className="w-full lg:w-[70%] xl:w-[50%]">
                 <div className="flex flex-col gap-6">
@@ -142,7 +138,7 @@ export default function UserProfile() {
                 </div>
             </div>
 
-            <div className="hidden lg:block w-[30%]"><RightSide user={user} /></div>
+            <SidebarProvider><div className="hidden lg:block w-[30%]"><RightSide user={user} /></div></SidebarProvider>
         </div>
     );
 }
